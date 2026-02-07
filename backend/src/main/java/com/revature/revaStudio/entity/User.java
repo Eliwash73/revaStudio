@@ -1,20 +1,24 @@
 package com.revature.revaStudio.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", nullable = false)
-    private Long Id;
+    private Integer Id;
 
     @Column(name = "role_id")
-    private Long RoleId;
+    private Integer RoleId;
 
     @Column(nullable = false)
     private String Role;
