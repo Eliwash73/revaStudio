@@ -22,7 +22,7 @@ public class Track {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "album_id", nullable = false)
-    private Integer albumId;
+    private Album album;
 
     @Column(name = "composer", nullable = false)
     private String composer;
