@@ -20,6 +20,7 @@ public class Customer {
     @Column(name = "first_name", nullable = false)
     private String customerFirstName;
 
-    @Column(name = "support_rep_id", nullable = false)
-    private Integer supportRepId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "support_rep_id",nullable = false)
+    private Employee employee;
 }
