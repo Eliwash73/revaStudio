@@ -21,7 +21,7 @@ public class InvoiceLine {
     private Invoice invoice;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "track_id",nullable = false)
+    @JoinColumn(name = "track_id")
     private Track track;
 
 }
