@@ -6,10 +6,11 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 import org.jspecify.annotations.NullMarked;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,7 +27,6 @@ public class User implements UserDetails {
     @Column(name = "role_id")
     private Integer roleId;
 
-//    @Column(nullable = false)
     private String role;
 
     @Column(unique = true,nullable = false)
@@ -38,7 +38,7 @@ public class User implements UserDetails {
     @Override
     @NullMarked
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role));
     }
 
     @Override

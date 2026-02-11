@@ -20,29 +20,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     public CustomUserDetailsService(UserRepository userRepository){
         this.userRepository = userRepository;
-        System.out.println("reached");
-    }
-
-    @Autowired
-    private DataSource dataSource;
-
-    @PostConstruct
-    public void printDbInfo() throws Exception {
-        System.out.println("DB URL: " + dataSource.getConnection().getMetaData().getURL());
     }
 
     @Override
     @NullMarked
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        System.out.println("Incoming username: [" + username + "]");
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        System.out.println("User present: " + optionalUser.isPresent());
-        User user = userRepository
+        return userRepository
                 .findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        System.out.println("reached");
-        System.out.println(user.getUsername());
-        System.out.println(user.getPassword());
-        return user;
     }
 }

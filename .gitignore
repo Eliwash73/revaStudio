@@ -57,5 +57,4 @@ yarn-error.log*
 # Env / local config
 ########################################
 .env
-application-local.yml
-application-local.properties
+application.properties

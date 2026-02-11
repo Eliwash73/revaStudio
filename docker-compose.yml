@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:18
+    container_name: chinook-db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: chinook_auto_increment
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
